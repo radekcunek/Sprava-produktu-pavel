@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback } from "react";
 import ProductList from "./components/ProductList";
 import ProductForm from "./components/ProductForm";
 import ProductFilter from "./components/ProductFilter";
+import SupportWindow from "./components/SupportWindow";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 
 // Základní URL pro všechna API volání – díky Vite proxy stačí relativní cesta
 const API_URL = "/api/products";
@@ -23,8 +25,8 @@ function App() {
   // Stav, který určuje, zda zobrazujeme formulář pro přidání/úpravu
   const [zobrazitFormular, setZobrazitFormular] = useState(false);
 
-  // Pokud upravujeme existující produkt, uložíme ho sem; null = přidáváme nový
   const [upravovanyProdukt, setUpravovanyProdukt] = useState(null);
+  const statistikyRef = useScrollReveal();
 
   // useCallback zajistí, že funkce nevznikne znovu při každém renderu
   // Funkce načte produkty z API se zadanými filtry
@@ -160,7 +162,7 @@ function App() {
         <ProductFilter filtry={filtry} onZmenaFiltru={setFiltry} />
 
         {/* Statistiky */}
-        <div className="statistiky">
+        <div ref={statistikyRef} className="statistiky scroll-stat-kontejner">
           <div className="stat-karta">
             <span className="stat-cislo">{produkty.length}</span>
             <span className="stat-popis">Produktů celkem</span>
@@ -198,6 +200,7 @@ function App() {
           onSmazat={smazProdukt}
         />
       </main>
+      <SupportWindow />
     </div>
   );
 }

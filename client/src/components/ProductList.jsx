@@ -1,20 +1,19 @@
-// Komponenta pro zobrazení seznamu produktů jako grid karet
-// Zobrazuje loading spinner, prázdný stav nebo mřížku karet
-
+// Seznam produktů – zobrazuje skeleton karty při načítání, jinak grid karet
 import ProductCard from "./ProductCard";
+import SkeletonCard from "./SkeletonCard";
 
 function ProductList({ produkty, nacitani, onUpravit, onSmazat }) {
-  // Zobrazíme animovaný spinner dokud se data načítají
+  // Skeleton – zobrazíme 6 placeholder karet aby layout nevyskakoval
   if (nacitani) {
     return (
-      <div className="stav-kontejner">
-        <div className="spinner" />
-        <p>Načítám produkty...</p>
+      <div className="produkty-grid">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <SkeletonCard key={i} />
+        ))}
       </div>
     );
   }
 
-  // Pokud jsou data prázdná, zobrazíme přátelskou zprávu
   if (produkty.length === 0) {
     return (
       <div className="stav-kontejner">
@@ -25,13 +24,13 @@ function ProductList({ produkty, nacitani, onUpravit, onSmazat }) {
     );
   }
 
-  // Renderujeme mřížku karet – každá karta dostane produkt a callback funkce
   return (
     <div className="produkty-grid">
-      {produkty.map((produkt) => (
+      {produkty.map((produkt, index) => (
         <ProductCard
           key={produkt.id}
           produkt={produkt}
+          index={index}
           onUpravit={onUpravit}
           onSmazat={onSmazat}
         />

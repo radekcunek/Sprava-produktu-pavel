@@ -1,9 +1,9 @@
-// Komponenta pro filtrování produktů – obsahuje vstupy pro hledání a různé filtry
-// Změny se ihned propagují do rodičovské komponenty přes callback onZmenaFiltru
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const KATEGORIE = ["Elektronika", "Příslušenství", "Komponenty", "Audio", "Ostatní"];
 
 function ProductFilter({ filtry, onZmenaFiltru }) {
+  const scrollRef = useScrollReveal();
   // Pomocná funkce pro aktualizaci jednoho filtru bez přepsání ostatních
   const zmenFiltr = (klic, hodnota) => {
     onZmenaFiltru((predchozi) => ({ ...predchozi, [klic]: hodnota }));
@@ -19,7 +19,7 @@ function ProductFilter({ filtry, onZmenaFiltru }) {
     filtry.hledat || filtry.kategorie || filtry.minCena || filtry.maxCena;
 
   return (
-    <div className="filtr-panel">
+    <div ref={scrollRef} className="filtr-panel scroll-animovat">
       <div className="filtr-radek">
         {/* Textové vyhledávání */}
         <div className="filtr-skupina">
