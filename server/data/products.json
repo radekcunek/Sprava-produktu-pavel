@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "nazev": "Notebook Dell XPS 15",
+    "kategorie": "Elektronika",
+    "cena": 45990,
+    "mnozstvi": 12,
+    "popis": "Výkonný notebook s OLED displejem a procesorem Intel Core i7",
+    "datumPridani": "2026-01-15"
+  },
+  {
+    "id": "2",
+    "nazev": "Mechanická klávesnice Keychron K2",
+    "kategorie": "Příslušenství",
+    "cena": 2990,
+    "mnozstvi": 34,
+    "popis": "Kompaktní mechanická klávesnice s RGB podsvícením a přepínači Brown",
+    "datumPridani": "2026-01-20"
+  },
+  {
+    "id": "3",
+    "nazev": "Monitor LG 27UK850",
+    "kategorie": "Elektronika",
+    "cena": 12490,
+    "mnozstvi": 7,
+    "popis": "27palcový 4K UHD IPS monitor s USB-C a HDR400",
+    "datumPridani": "2026-02-03"
+  },
+  {
+    "id": "4",
+    "nazev": "Herní myš Logitech G502",
+    "kategorie": "Příslušenství",
+    "cena": 1590,
+    "mnozstvi": 56,
+    "popis": "Ergonomická herní myš s nastavitelnou váhou a 11 programovatelnými tlačítky",
+    "datumPridani": "2026-02-10"
+  },
+  {
+    "id": "5",
+    "nazev": "Webkamera Logitech C920",
+    "kategorie": "Příslušenství",
+    "cena": 2290,
+    "mnozstvi": 22,
+    "popis": "Full HD webkamera se stereo mikrofonem, ideální pro videokonference",
+    "datumPridani": "2026-02-18"
+  },
+  {
+    "id": "6",
+    "nazev": "SSD Samsung 970 EVO 1TB",
+    "kategorie": "Komponenty",
+    "cena": 3490,
+    "mnozstvi": 45,
+    "popis": "NVMe M.2 SSD s rychlostí čtení až 3500 MB/s",
+    "datumPridani": "2026-03-01"
+  },
+  {
+    "id": "7",
+    "nazev": "RAM Kingston 32GB DDR5",
+    "kategorie": "Komponenty",
+    "cena": 4290,
+    "mnozstvi": 18,
+    "popis": "Sada dvou modulů 16GB DDR5-4800 RAM s XMP profilem",
+    "datumPridani": "2026-03-05"
+  },
+  {
+    "id": "8",
+    "nazev": "Stolní reproduktory Edifier R1280T",
+    "kategorie": "Audio",
+    "cena": 2890,
+    "mnozstvi": 9,
+    "popis": "Aktivní stereo reproduktory s optickým vstupem a dálkovým ovládáním",
+    "datumPridani": "2026-03-12"
+  }
+]

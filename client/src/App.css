@@ -1,0 +1,632 @@
+/* ============================================
+   Globální proměnné a reset
+   ============================================ */
+:root {
+  --modra: #4f46e5;
+  --modra-tmava: #3730a3;
+  --modra-svetla: #e0e7ff;
+  --cervena: #ef4444;
+  --cervena-svetla: #fee2e2;
+  --zelena: #10b981;
+  --zelena-svetla: #d1fae5;
+  --oranzova: #f59e0b;
+  --oranzova-svetla: #fef3c7;
+  --seda-100: #f3f4f6;
+  --seda-200: #e5e7eb;
+  --seda-400: #9ca3af;
+  --seda-600: #4b5563;
+  --seda-800: #1f2937;
+  --bila: #ffffff;
+  --stín: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --stín-stredni: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --stín-velky: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --radius: 12px;
+  --radius-male: 8px;
+  --prechod: all 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: var(--seda-800);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Layout aplikace
+   ============================================ */
+.app {
+  min-height: 100vh;
+}
+
+.hlavni-obsah {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ============================================
+   Záhlaví (header)
+   ============================================ */
+.header {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-obsah {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-nazev {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-ikona {
+  font-size: 2.5rem;
+}
+
+.header h1 {
+  color: var(--bila);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   Tlačítka
+   ============================================ */
+.btn {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-male);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--prechod);
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--bila);
+  color: var(--modra);
+  font-weight: 600;
+  box-shadow: var(--stín);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--modra-svetla);
+  transform: translateY(-1px);
+  box-shadow: var(--stín-stredni);
+}
+
+.btn-sekundarni {
+  background: var(--seda-100);
+  color: var(--seda-600);
+}
+
+.btn-sekundarni:hover:not(:disabled) {
+  background: var(--seda-200);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--modra);
+  color: var(--modra);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--modra-svetla);
+}
+
+.btn-nebezpeci {
+  background: transparent;
+  border: 1.5px solid var(--cervena);
+  color: var(--cervena);
+}
+
+.btn-nebezpeci:hover:not(:disabled) {
+  background: var(--cervena-svetla);
+}
+
+/* ============================================
+   Notifikace / Chybové hlášky
+   ============================================ */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-male);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.alert button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.7;
+  transition: var(--prechod);
+}
+
+.alert button:hover {
+  opacity: 1;
+}
+
+.alert-chyba {
+  background: var(--cervena-svetla);
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* ============================================
+   Statistiky
+   ============================================ */
+.statistiky {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-karta {
+  background: var(--bila);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--stín-stredni);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-cislo {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--modra);
+  line-height: 1;
+}
+
+.stat-popis {
+  font-size: 0.8rem;
+  color: var(--seda-400);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ============================================
+   Filtrovací panel
+   ============================================ */
+.filtr-panel {
+  background: var(--bila);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--stín-stredni);
+}
+
+.filtr-radek {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.filtr-skupina {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 160px;
+}
+
+.filtr-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--seda-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filtr-input {
+  padding: 0.6rem 0.875rem;
+  border: 1.5px solid var(--seda-200);
+  border-radius: var(--radius-male);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: var(--prechod);
+  background: var(--bila);
+  color: var(--seda-800);
+  width: 100%;
+}
+
+.filtr-input:focus {
+  outline: none;
+  border-color: var(--modra);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.filtr-reset {
+  flex: 0 0 auto;
+}
+
+.input-ikona {
+  position: relative;
+}
+
+.input-ikona .ikona {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+}
+
+.input-ikona .filtr-input {
+  padding-left: 2.25rem;
+}
+
+/* ============================================
+   Grid produktů
+   ============================================ */
+.produkty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ============================================
+   Karta produktu
+   ============================================ */
+.produkt-karta {
+  background: var(--bila);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--stín-stredni);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: var(--prechod);
+  border: 1px solid transparent;
+}
+
+.produkt-karta:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--stín-velky);
+  border-color: var(--modra-svetla);
+}
+
+.karta-hlavicka {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kategorie-ikona {
+  font-size: 2rem;
+}
+
+.stav-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.stav-dostupne {
+  background: var(--zelena-svetla);
+  color: #065f46;
+}
+
+.stav-malo {
+  background: var(--oranzova-svetla);
+  color: #92400e;
+}
+
+.stav-vyprodano {
+  background: var(--cervena-svetla);
+  color: #991b1b;
+}
+
+.produkt-nazev {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--seda-800);
+  line-height: 1.3;
+}
+
+.produkt-kategorie {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--modra);
+  background: var(--modra-svetla);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.produkt-popis {
+  font-size: 0.875rem;
+  color: var(--seda-600);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.produkt-detaily {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--seda-100);
+  border-bottom: 1px solid var(--seda-100);
+}
+
+.produkt-cena {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--modra);
+}
+
+.produkt-mnozstvi {
+  font-size: 0.9rem;
+  color: var(--seda-600);
+  font-weight: 500;
+}
+
+.produkt-datum {
+  font-size: 0.78rem;
+  color: var(--seda-400);
+}
+
+.karta-akce {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.karta-akce .btn {
+  flex: 1;
+  justify-content: center;
+  padding: 0.55rem;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   Prázdný stav a načítání
+   ============================================ */
+.stav-kontejner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: var(--bila);
+  border-radius: var(--radius);
+  box-shadow: var(--stín-stredni);
+  text-align: center;
+  gap: 1rem;
+  color: var(--seda-600);
+}
+
+.prazdny-stav-ikona {
+  font-size: 3rem;
+}
+
+.stav-kontejner h3 {
+  font-size: 1.25rem;
+  color: var(--seda-800);
+}
+
+/* Animovaný spinner pro načítání */
+.spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid var(--seda-200);
+  border-top-color: var(--modra);
+  border-radius: 50%;
+  animation: toceni 0.8s linear infinite;
+}
+
+@keyframes toceni {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Modal overlay a formulář
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1rem;
+}
+
+.modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: vyjedZdola 0.25s ease;
+}
+
+@keyframes vyjedZdola {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formular-kontejner {
+  background: var(--bila);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--stín-velky);
+}
+
+.formular-hlavicka {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.formular-hlavicka h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.zavrit-btn {
+  background: var(--seda-100);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--prechod);
+  color: var(--seda-600);
+}
+
+.zavrit-btn:hover {
+  background: var(--seda-200);
+  color: var(--seda-800);
+}
+
+.formular-skupina {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.formular-skupina.ma-chybu .formular-input {
+  border-color: var(--cervena);
+}
+
+.formular-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--seda-600);
+}
+
+.povinne {
+  color: var(--cervena);
+}
+
+.formular-input {
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--seda-200);
+  border-radius: var(--radius-male);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: var(--prechod);
+  width: 100%;
+  color: var(--seda-800);
+  background: var(--bila);
+}
+
+.formular-input:focus {
+  outline: none;
+  border-color: var(--modra);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.formular-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formular-radek {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.chyba-text {
+  font-size: 0.8rem;
+  color: var(--cervena);
+  font-weight: 500;
+}
+
+.formular-akce {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   Responzivita pro menší obrazovky
+   ============================================ */
+@media (max-width: 640px) {
+  .header-obsah {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .hlavni-obsah {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  .statistiky {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .produkty-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formular-radek {
+    grid-template-columns: 1fr;
+  }
+
+  .filtr-skupina {
+    min-width: 100%;
+  }
+}
