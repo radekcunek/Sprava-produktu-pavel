@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import ProductShowcase from "./components/ProductShowcase";
+import ProductCarousel from "./components/ProductCarousel";
 import ProductForm from "./components/ProductForm";
 import ProductFilter from "./components/ProductFilter";
 import SupportWindow from "./components/SupportWindow";
@@ -241,7 +241,7 @@ function App() {
             </div>
           </div>
 
-          <ProductShowcase
+          <ProductCarousel
             produkty={produkty}
             nacitani={nacitani}
             onUpravit={(p) => { setUpravovanyProdukt(p); setZobrazitFormular(true); }}
